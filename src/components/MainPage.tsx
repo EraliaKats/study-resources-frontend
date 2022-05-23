@@ -2,12 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { baseURL } from "../utils/URL";
 import { matchesSearchText } from "../utils/matchesSearchText";
-import { ResourceInfo, UserInterface } from "./Interfaces";
+import { NoUserInterface, ResourceInfo, UserInterface } from "./Interfaces";
 import Resources from "./Resources";
 import { TagCloud } from "./TagCloud";
 
 interface MainPageProps {
   setCurrentUser: (arg0: UserInterface) => void;
+  currentUser: UserInterface | NoUserInterface;
 }
 
 export default function MainPage(props: MainPageProps): JSX.Element {
@@ -47,6 +48,7 @@ export default function MainPage(props: MainPageProps): JSX.Element {
         resources={filteredForSearch}
         resourceSearch={resourceSearch}
         setResourceSearch={setResourceSearch}
+        currentUser={props.currentUser}
       />
     </main>
   );

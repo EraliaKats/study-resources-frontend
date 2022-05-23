@@ -23,7 +23,11 @@ export default function StudyList(props: StudyListProps): JSX.Element {
   }, [props.currentUser]);
 
   const mapOfResourcesInStudyList = studylist.map((item) => (
-    <SingleResourceBlock key={item.resource_id} data={item} />
+    <SingleResourceBlock
+      key={item.resource_id}
+      data={item}
+      currentUser={props.currentUser}
+    />
   ));
 
   return (

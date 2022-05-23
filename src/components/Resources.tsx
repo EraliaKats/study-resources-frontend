@@ -1,11 +1,12 @@
 import { Controls } from "./Controls";
-import { ResourceInfo } from "./Interfaces";
+import { NoUserInterface, ResourceInfo, UserInterface } from "./Interfaces";
 import SingleResourceBlock from "./SingleResourceBlock";
 
 interface ResourcesProps {
   resources: ResourceInfo[];
   resourceSearch: string;
   setResourceSearch: (arg0: string) => void;
+  currentUser: UserInterface | NoUserInterface;
 }
 
 export default function Resources(props: ResourcesProps): JSX.Element {
@@ -18,7 +19,11 @@ export default function Resources(props: ResourcesProps): JSX.Element {
   const resourcesBlocks: JSX.Element[] = props.resources
     .slice(0, 5)
     .map((resource) => (
-      <SingleResourceBlock key={resource.resource_id} data={resource} />
+      <SingleResourceBlock
+        key={resource.resource_id}
+        data={resource}
+        currentUser={props.currentUser}
+      />
     ));
 
   return (

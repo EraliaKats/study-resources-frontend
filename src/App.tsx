@@ -18,7 +18,12 @@ function App(): JSX.Element {
         <Routes>
           <Route
             path="/"
-            element={<MainPage setCurrentUser={setCurrentUser} />}
+            element={
+              <MainPage
+                setCurrentUser={setCurrentUser}
+                currentUser={currentUser}
+              />
+            }
           ></Route>
           <Route
             path="/create"
