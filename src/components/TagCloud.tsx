@@ -10,7 +10,7 @@ interface TagCloudInt {
 
 export function TagCloud(props: TagCloudInt): JSX.Element {
   const [tags, setTags] = useState<tagInterface[]>([]);
-  const [classid, setclass] = useState<number[]>();
+  const [classid, setclass] = useState<number[]>([]);
   useEffect(() => {
     async function fetchTags() {
       const tagRes = await axios.get(baseURL + "/tags");
@@ -33,6 +33,11 @@ export function TagCloud(props: TagCloudInt): JSX.Element {
     }
   }
 
+  function activateTag(tag: tagInterface): string {
+    const isTagSelected = classid[0] === tag.tag_id ? "active" : "";
+    return isTagSelected;
+  }
+
   const tagCloud: JSX.Element[] = tags.map((tag) => {
     return (
       <div
@@ -40,13 +45,7 @@ export function TagCloud(props: TagCloudInt): JSX.Element {
           handleClick(tag.tag_id);
           setclass([tag.tag_id]);
         }}
-        className={
-          classid
-            ? classid[0] === tag.tag_id
-              ? "tagElement" + 1
-              : "tagElement0"
-            : "tagElement0"
-        }
+        className={`btn btn-success mx-2 my-3 ${activateTag(tag)}`}
         key={tag.tag_id}
       >
         {tag.name}
@@ -56,8 +55,10 @@ export function TagCloud(props: TagCloudInt): JSX.Element {
 
   return (
     <>
-      <h1>Tag Cloud</h1>
-      <section className="tagCloudContainer">{tagCloud}</section>
+      <h4 className="text-center mt-2">Search by Tag</h4>
+      <section className="container d-flex flex-row flex-wrap justify-content-center">
+        {tagCloud}
+      </section>
     </>
   );
 }

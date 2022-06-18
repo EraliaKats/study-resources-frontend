@@ -1,75 +1,54 @@
-.tagCloudContainer{
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: center;
+/* Wanted 3 cards per row. Had to set width but couldn't do inline with BootStrap */
+.resourcesBlocksContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  justify-content: center;
 }
 
-.tagElement0{
-    border: 1px solid black;
-    background-color: lightslategray;
-    margin: 5px;
-    padding: 5px;
-}
-.tagElement1{
-    border: 1px solid black;
-    background-color: rgb(212, 184, 20);
-    margin: 5px;
-    padding: 5px;
+.resourceBlockWidth {
+  width: 30%;
 }
 
-h1{
-    font-family: 'Times New Roman', Times, serif;
-    color: #050C66;
-    font-size: 40px;
-    font-weight: 500px;
-    text-align: center;
-}
-body{
-    background-color: antiquewhite
+@media (max-width: 1000px) {
+  .resourceBlockWidth {
+    width: 45%;
+  }
 }
 
-.resourceListContainer{
-
-    display: flex;
-    flex-direction: column;
-    padding: 50px
+@media (max-width: 700px) {
+  .resourceBlockWidth {
+    width: 100%;
+  }
 }
 
-.singleResourceContainer{
-
-    display: flex;
-    flex-direction: column;
-    border: 5px solid #050C66;
-    border-radius: 1%;
-    padding: 10px;
-    margin: 10px auto;
-    width: 70%;
-    box-shadow: 10px 10px #000000;
+/* To syle router links properly */
+a:link {
+  text-decoration: none;
 }
 
-.votesContainer{
-    align-items: center;
-    justify-content: space-evenly;
-    display: inline-flex;
-
+a:visited {
+  text-decoration: none;
 }
 
-.resourceTitle{
-    text-align: center;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 800;
-    font-size: 30px;
-    color:#050C66
+a:hover {
+  text-decoration: underline;
 }
 
-.uploadInfo{
-    font-size: 20px;
-    padding: -20px 0px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+a:active {
+  text-decoration: underline;
 }
 
-.topDataBox{
-    border: 1px solid #050C66;
-    padding: 5px
+.red {
+  background-color: red;
 }
 
+.green {
+  background-color: green;
+}
+
+.orange {
+  background-color: orange;
+}

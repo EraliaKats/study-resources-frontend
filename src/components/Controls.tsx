@@ -5,13 +5,18 @@ interface ControlsProps {
 
 export function Controls(props: ControlsProps): JSX.Element {
   return (
-    <div>
+    <div className="d-flex justify-content-center mb-4">
       <input
         placeholder="Search Resources..."
         value={props.resourceSearch}
         onChange={(e) => props.setResourceSearch(e.target.value)}
       ></input>
-      <button onClick={() => props.setResourceSearch("")}>Clear Search</button>
+      <button
+        className="btn btn-danger"
+        onClick={() => props.setResourceSearch("")}
+      >
+        Clear Search
+      </button>
     </div>
   );
 }

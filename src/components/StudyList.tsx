@@ -39,8 +39,10 @@ export default function StudyList({
 
   return (
     <>
-      <h1>Your Study List</h1>
-      <div>{mapOfResourcesInStudyList}</div>
+      <h1 className="m-3 text-center">Your Study List</h1>
+      <div className="resourcesBlocksContainer">
+        {mapOfResourcesInStudyList}
+      </div>
     </>
   );
 }

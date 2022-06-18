@@ -5,6 +5,7 @@ import { matchesSearchText } from "../utils/matchesSearchText";
 import { NoUserInterface, ResourceInfo, UserInterface } from "./Interfaces";
 import Resources from "./Resources";
 import { TagCloud } from "./TagCloud";
+import { Controls } from "./Controls";
 
 interface MainPageProps {
   setCurrentUser: (arg0: UserInterface) => void;
@@ -39,16 +40,30 @@ export default function MainPage(props: MainPageProps): JSX.Element {
     );
   }
 
+  let isUserSearching = false;
+
+  if (filteredByTag.length > 0 || resourceSearch !== "") {
+    isUserSearching = true;
+  }
+
   return (
     <main>
+      <h1 className="text-center my-4">Resources for you:</h1>
+      <Controls
+        resourceSearch={resourceSearch}
+        setResourceSearch={setResourceSearch}
+      />
       <TagCloud
         setFilteredByTag={setFilteredByTag}
         filteredByTag={filteredByTag}
       />
+      <p className="text-center mt-3">
+        Number Of Resources Found: {filteredForSearch.length}
+      </p>
+
+      {isUserSearching && <h5 className="text-center">Search Results:</h5>}
       <Resources
         resources={filteredForSearch}
-        resourceSearch={resourceSearch}
-        setResourceSearch={setResourceSearch}
         currentUser={props.currentUser}
         studylist={props.studylist}
       />
